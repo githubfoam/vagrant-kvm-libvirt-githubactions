@@ -1,0 +1,23 @@
+
+name: "windows vagrant kvm qemu libvirt CI workflow"
+
+on:
+  push:
+    branches: [ master ]
+  schedule:
+      - cron:  '0 0 1 * *' ##execution of a task in the first minute of the month
+
+
+jobs:
+
+  windows-latest-pwsh-scripts:
+    name: "windows-latest Microsoft Windows Server 2019 Datacenter pwsh"  
+    runs-on: windows-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v1
+    - name: "silent install vagrant" 
+      run: .\scripts\Deploy_Vagrant.ps1
+      shell: pwsh    
+              
+

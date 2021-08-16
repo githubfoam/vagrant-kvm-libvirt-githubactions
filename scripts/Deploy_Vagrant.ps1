@@ -21,7 +21,9 @@ ELSE
 { New-Item -Path $workdir  -ItemType directory }
 
 # chocolatey installer  
-choco virtualbox vagrant cyg-get 
+choco install virtualbox
+choco install vagrant 
+choco install cyg-get 
 vagrant -v
 vboxmanage -v
 vagrant up

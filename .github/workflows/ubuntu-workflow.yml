@@ -11,9 +11,37 @@ on:
 jobs:
      
 
-  ubuntu-latest-job:
-    name: "vagrant kvm qemu libvirt on ubuntu-latest"
-    runs-on: ubuntu-latest
+  ubuntu-1604-job:
+    name: "vagrant kvm qemu libvirt  on ubuntu-16.04"
+    runs-on: ubuntu-16.04
+    steps:
+    - uses: actions/checkout@v2
+    - name: "os fingerprinting"
+      run: hostnamectl status  
+    - name: "deploy-libvirt "
+      run: sudo make deploy-libvirt    
+    - name: "deploy-vagrant "
+      run: sudo make deploy-vagrant    
+    - name: "deploy-boxes "
+      run: sudo make deploy-boxes    
+
+  ubuntu-1804-job:
+    name: "vagrant kvm qemu libvirt  onubuntu-18.04"
+    runs-on: ubuntu-18.04
+    steps:
+    - uses: actions/checkout@v2
+    - name: "os fingerprinting"
+      run: hostnamectl status  
+    - name: "deploy-libvirt "
+      run: sudo make deploy-libvirt    
+    - name: "deploy-vagrant "
+      run: sudo make deploy-vagrant    
+    - name: "deploy-boxes "
+      run: sudo make deploy-boxes   
+
+  ubuntu-2004-job:
+    name: "vagrant kvm qemu libvirt  on ubuntu-20.04"
+    runs-on: ubuntu-20.04
     steps:
     - uses: actions/checkout@v2
     - name: "os fingerprinting"
@@ -24,3 +52,19 @@ jobs:
       run: sudo make deploy-vagrant    
     - name: "deploy-boxes "
       run: sudo make deploy-boxes               
+
+
+  ubuntu-latest-job:
+    name: "vagrant kvm qemu libvirt on ubuntu-latest"
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: "os fingerprinting"
+      run: hostnamectl status 
+    # Package 'libvirt-bin' has no installation candidate
+    # - name: "deploy-libvirt "
+    #   run: sudo make deploy-libvirt    
+    # - name: "deploy-vagrant "
+    #   run: sudo make deploy-vagrant    
+    # - name: "deploy-boxes "
+    #   run: sudo make deploy-boxes               
